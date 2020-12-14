@@ -1,0 +1,240 @@
+$break-tablet: 767px;
+$break-mobile: 425px;
+
+@mixin respond-max($media) {
+  @if $media == tablet {
+    @media (max-width: $break-tablet) {
+      @content;
+    }
+  } @else if $media == mobile {
+    @media (max-width: $break-mobile) {
+      @content;
+    }
+  }
+}
+
+@mixin field {
+  border: 1px solid lightgrey;
+  padding: 20px;
+  background-color: white;
+}
+
+//color
+$bg-color: #edf2f8;
+$light-green: #579bfc;
+$middle-green: #5c9bfc;
+$light-gray: #f5f6f8;
+$light-sat-gray: #e6e9ef;
+$middle-gray: #5b6066;
+$primary: #80bdff;
+$info: #00c875;
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Barlow Semi Condensed";
+  font-size: 18px;
+  background-color: $bg-color;
+}
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  color: $middle-gray;
+}
+h2 {
+  font-size: 18px;
+  margin: 0 0 10px;
+  color: $middle-green;
+  font-weight: bold;
+}
+.main {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  .container {
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    border: 1px solid lightgrey;
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.16);
+  }
+  &__left {
+    width: 50%;
+    @include field();
+    @include respond-max(tablet) {
+      width: 100%;
+    }
+    background: url("./images/telephone.jpg") no-repeat top right;
+    background-size: cover;
+    .form-group {
+      margin-bottom: 20px;
+      input,
+      textarea {
+        padding: 5px;
+        border: 1px solid $light-gray;
+        transition: all ease-in-out 0.3s;
+        outline: 0;
+        color: $middle-gray;
+        &:focus {
+          border-color: $primary;
+          box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25);
+          transition: all ease-in-out 0.3s;
+        }
+      }
+      input {
+        width: 50%;
+        @include respond-max(mobile) {
+          width: 100%;
+        }
+      }
+      textarea {
+        width: 100%;
+      }
+      .btn-add {
+        cursor: pointer;
+        padding: 6px 15px;
+        color: white;
+        background: $info;
+        border: 1px solid $info;
+        outline: none;
+        text-transform: capitalize;
+        border-radius: 3px;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+  &__middle {
+    width: 25%;
+    @include field();
+    @include respond-max(tablet) {
+      width: 50%;
+    }
+    @include respond-max(mobile) {
+      width: 100%;
+      min-height: 350px;
+    }
+    .list-container {
+      .list-item {
+        position: relative;
+        padding: 6px 5px;
+        letter-spacing: 0.5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        text-transform: capitalize;
+        background: $light-gray;
+        border: 1px solid $light-sat-gray;
+        border-left: 8px solid $light-green;
+        &__subject {
+          color: $middle-gray;
+          cursor: pointer;
+          &:hover {
+            color: $middle-green;
+          }
+        }
+        &__remove {
+          cursor: pointer;
+        }
+        &__email {
+          display: none;
+        }
+        &__confirm {
+          display: none;
+          position: absolute;
+          top: -260%;
+          right: -38px;
+          border-radius: 4px;
+          border: 1px solid $light-sat-gray;
+          background-color: white;
+          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.16);
+          @include respond-max(mobile) {
+            right: -3px;
+            &::after {
+              left: unset !important;
+              right: 8px;
+            }
+          }
+          &::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: $middle-gray transparent transparent transparent;
+          }
+          &.show {
+            display: block;
+          }
+          p {
+            padding: 10px;
+            background-color: $light-gray;
+            font-weight: bold;
+          }
+          .confirm-container {
+            padding: 10px;
+            text-align: center;
+            i {
+              padding-right: 3px;
+            }
+            .confirm-yes {
+              cursor: pointer;
+              border-right: 1px solid white;
+              padding-right: 5px;
+              i {
+                color: $light-green;
+              }
+            }
+            .confirm-no {
+              cursor: pointer;
+              padding-left: 5px;
+              i {
+                color: lightcoral;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &__right {
+    width: 25%;
+    @include field();
+    @include respond-max(tablet) {
+      width: 50%;
+    }
+    @include respond-max(mobile) {
+      width: 100%;
+    }
+    .btn-text {
+      display: block;
+      padding: 6px 15px;
+      color: white;
+      background: $info;
+      border: 1px solid $info;
+      outline: none;
+      margin-bottom: 10px;
+      cursor: pointer;
+      border-radius: 3px;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+    @include field();
+  }
+}

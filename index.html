@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend | Test Trial</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="main">
+      <div class="container">
+        <div class="main__left">
+          <h2>Phone</h2>
+          <div class="form-group">
+            <input type="text" class="subject focus" placeholder="Subject" />
+          </div>
+          <div class="form-group">
+            <textarea
+              name="email-body"
+              id="email-body"
+              cols="30"
+              rows="10"
+              class="email-body focus"
+              placeholder="Email body"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <button class="btn-add">add email template</button>
+          </div>
+        </div>
+        <div class="main__middle">
+          <h2>Lists</h2>
+          <ul class="list-container"></ul>
+        </div>
+        <div class="main__right">
+          <h2>Add</h2>
+          <button class="btn-text">Company</button>
+          <button class="btn-text">Phone</button>
+          <button class="btn-text">URL</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="./js/jquery-3.11.js"></script>
+  <script type="text/javascript" src="script.js"></script>
+</html>
